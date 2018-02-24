@@ -8,6 +8,10 @@ export default {
     name:'new-task',
     path:'new-task',
     component:lazyLoad('components/tasks/new-task')
-  }]
-
+  },{
+    name:'accept-task',
+    path:'accept-task',
+    component:lazyLoad('components/tasks/task-list')
+  }
+]
 }

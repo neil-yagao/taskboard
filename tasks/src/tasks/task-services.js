@@ -1,15 +1,20 @@
-import dbObject from '../db/mongo-connection'
+var dbObject = require('../db/mongo-connection')
 
-let taskCollection = dbObject.collection('tasks');
-let taskServices = {
+var taskCollection = dbObject.collection('tasks');
+var taskServices = {
   insertTasks(tasks){
     if(!tasks){
       return '';
     }
     taskCollection.insert(tasks)
   },
-  readTasks(condition){
-    return taskCollection.find(condition)
+  findTasks(condition){
+    var result =  [];
+    taskCollection.find(condition,(error,doc)=>{
+      result = doc;
+    });
+    return result;
   }
 }
-export default taskServices;
+
+module.exports = taskServices;

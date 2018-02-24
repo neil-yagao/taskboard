@@ -28,7 +28,7 @@
 				<h3>要完成您任务的哪些技能必须要点呢？</h3>
 			</el-form-item>
 			<el-form-item>
-				<el-input placeholder="必须点的技能" v-model="project.skills" clearable></el-input>
+				<tag-input placeholder="+技能" v-model="project.skills" />
 			</el-form-item>
 			<el-form-item>
 				<h3>您预计要为此花费多少？</h3>
@@ -44,6 +44,8 @@
 </div>
 </template>
 <script>
+import TagInput from '../general/tag-input.vue';
+
 export default {
 	name: 'new-task',
 	data() {
@@ -51,7 +53,7 @@ export default {
 			project: {
 				name: '',
 				budget: '',
-				skills: '',
+				skills: [],
 				description: ''
 			}
 		}
@@ -60,6 +62,9 @@ export default {
 		onSubmit() {
 
 		}
+	},
+	components: {
+		TagInput
 	}
 }
 </script>

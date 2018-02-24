@@ -1,3 +1,4 @@
 export default {
-  hasLogin:false
+  hasLogin:false,
+  ctx:'/dev'
 }

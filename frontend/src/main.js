@@ -7,11 +7,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import "../static/base-style.css"
-Vue.use(ElementUI)
-
-new Vue({
-  el: '#app',
-  router,
-  store,
-  render: h => h(App)
-})
+import axios from './components/general/axios-plugin'
+Vue.use( ElementUI )
+Vue.use( axios )
+new Vue( {
+	el: '#app',
+	router,
+	store,
+	render: h => h( App )
+} )

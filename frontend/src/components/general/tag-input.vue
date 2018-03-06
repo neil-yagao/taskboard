@@ -3,7 +3,8 @@
 	<el-tag :key="tag" v-for="tag in dynamicTags" closable :disable-transitions="false" @close="handleClose(tag)">
 		{{tag}}
 	</el-tag>
-	<el-input class="input-new-tag" v-if="inputVisible" v-model="inputValue" ref="saveTagInput" size="small" @keyup.enter.native="handleInputConfirm" @blur="handleInputConfirm" :maxlength="20">
+	<el-input class="input-new-tag" v-if="inputVisible" v-model="inputValue" ref="saveTagInput" size="small" @keyup.enter.native="handleInputConfirm"
+	    @blur="handleInputConfirm" :maxlength="20">
 	</el-input>
 	<el-button v-else class="button-new-tag" size="small" @click="showInput">{{placeholder}}</el-button>
 </div>
@@ -37,21 +38,21 @@ export default {
 		};
 	},
 	methods: {
-		handleClose(tag) {
-			this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+		handleClose( tag ) {
+			this.dynamicTags.splice( this.dynamicTags.indexOf( tag ), 1 );
 		},
 		showInput() {
 			this.inputVisible = true;
-			this.$nextTick(_ => {
+			this.$nextTick( _ => {
 				this.$refs.saveTagInput.$refs.input.focus();
-			});
+			} );
 		},
 		handleInputConfirm() {
 			let inputValue = this.inputValue;
-			if (inputValue) {
-				this.dynamicTags.push(inputValue);
+			if ( inputValue ) {
+				this.dynamicTags.push( inputValue );
 			}
-			this.$emit('input', this.dynamicTags);
+			this.$emit( 'input', this.dynamicTags );
 			this.inputVisible = false;
 			this.inputValue = '';
 		}
@@ -64,6 +65,11 @@ export default {
 		placeholder: {
 			type: String,
 			default: '点我添加'
+		}
+	},
+	watch: {
+		value: function ( val ) {
+			this.dynamicTags = val;
 		}
 	}
 }

@@ -1,5 +1,7 @@
 <template>
 <el-input v-model="search" :placeholder="placeholder" size="large">
+
+	<i class="el-icon-search" slot="prefix"></i>
 	<el-button type="primary" class="large-input-suffix" slot="suffix" @click="doSearch()">{{btnText}}</el-button>
 </el-input>
 </template>
@@ -13,6 +15,12 @@
 	font-size: 24px;
 	margin-top: 6px;
 	padding-top: 10px;
+	margin-right: 10px;
+}
+
+.el-input--large i.el-icon-search {
+	font-size: 26px;
+	margin-top: 1.05rem;
 }
 </style>
 <script>
@@ -25,11 +33,11 @@ export default {
 	},
 	methods: {
 		doSearch() {
-			this.$emit('search', {
+			this.$emit( 'search', {
 				name: {
 					$regex: '.*' + this.search + ".*"
 				}
-			})
+			} )
 		}
 	},
 	props: {

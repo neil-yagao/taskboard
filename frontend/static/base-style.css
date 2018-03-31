@@ -1,7 +1,28 @@
+html * {
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+.grey-background{
+    background: #F0F0F0;
+}
+
+.white-background {
+    background: #ffffff
+}
+
+.sticky-btm {
+  position: absolute;
+  bottom: 0;
+}
+.full-screen {
+  position: absolute;
+	height: 100vh;
+	width: 100%;
+}
+
 .menu-text-base {
   font-size: 16px;
   color: #333;
-  font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
 }
 
 .menu-text-base:hover {

@@ -6,6 +6,7 @@ var cookieParser = require( 'cookie-parser' );
 var bodyParser = require( 'body-parser' );
 
 var tasks = require( './routes/tasks' );
+var user = require('./routes/user')
 
 var app = express();
 global.defaultSuccess = {
@@ -29,7 +30,7 @@ app.use( bodyParser.urlencoded( {
 app.use( cookieParser() );
 
 app.use( '/tasks', tasks );
-
+app.use('/users', user);
 // catch 404 and forward to error handler
 app.use( function ( req, res, next ) {
 	var err = new Error( 'Not Found' );
@@ -41,6 +42,7 @@ app.use( function ( req, res, next ) {
 app.use( function ( err, req, res, next ) {
 	//direct return error message
 	res.status( err.status || 500 );
+	console.log('err',err)
 	res.json( {
 		success: false,
 		msg: err.message

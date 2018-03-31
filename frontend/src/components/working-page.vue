@@ -1,13 +1,13 @@
 <template>
-<el-container>
-	<el-header>
+<el-container class="full-screen white-background">
+	<el-header style="height:4vh">
 		<common-header/>
 	</el-header>
-	<el-main>
-		<router-view/>
+	<el-main style="overflow-y:hidden;">
+		<el-card style="min-height:90vh;max-height:93vh;overflow-y:auto">
+			<router-view/>
+		</el-card>
 	</el-main>
-	<el-footer>
-	</el-footer>
 </el-container>
 </template>
 <script>
@@ -16,10 +16,8 @@ export default {
 	name: 'wokring-main',
 	data() {
 		return {
-			msg: 'Welcome to Your Vue.js App',
-			activeIndex: '0'
-		}
 
+		}
 	},
 	methods: {
 		handleSelect(event) {
@@ -28,6 +26,15 @@ export default {
 	},
 	components: {
 		CommonHeader
+	},
+	mounted() {
+		let username = this.readCookie('USERNAME');
+		if (username) {
+			this.$store.commit('setLoginUser', {
+				_id: this.readCookie('USER_ID'),
+				username: username
+			})
+		}
 	}
 }
 </script>

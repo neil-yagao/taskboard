@@ -1,4 +1,5 @@
 export default {
   hasLogin:false,
-  ctx:'/dev'
+  ctx:'/dev',
+  user:{}
 }

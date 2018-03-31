@@ -1,7 +1,7 @@
 <template>
 <ul class="float-right margin-to-middle" @click.native="clickItem($event)" :router="false">
-	<el-button class="operating-button" type="text">注册</el-button>
-	<el-button class="operating-button" type="text">登录</el-button>
+	<el-button class="operating-button" type="text" @click.native="$router.push('/register')">注册</el-button>
+	<el-button class="operating-button" type="text" @click.native="$router.push('/login')">登录</el-button>
 </ul>
 </template>
 <script>

@@ -5,7 +5,7 @@
 	</el-header>
 	<el-container>
 		<el-main>
-			<task-brief/>
+			<task-brief v-for="(task,index) in tasks" :key="index" :task="task" key="id" @update-list="fetchTasks" />
 		</el-main>
 	</el-container>
 </div>
@@ -17,12 +17,23 @@ export default {
 	name: 'task-list',
 	data() {
 		return {
-			search: ''
+			search: '',
+			tasks: []
 		}
 	},
 	components: {
 		TaskSearch,
 		TaskBrief
+	},
+	methods: {
+		fetchTasks() {
+			this.axios.get('/tasks').then(res => {
+				this.tasks = res;
+			})
+		}
+	},
+	mounted() {
+		this.fetchTasks();
 	}
 }
 </script>

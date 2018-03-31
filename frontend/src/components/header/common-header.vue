@@ -10,12 +10,14 @@
 			<el-menu-item index="/task/accept-task"><span class="menu-text-base">认领任务</span></el-menu-item>
 			<el-menu-item index="/task/how-to"><span class="menu-text-base">我该如何下手？</span></el-menu-item>
 			<no-login-right v-if="!$store.state.hasLogin" />
+			<login-right v-if="$store.state.hasLogin" />
 		</el-menu>
 	</el-col>
 </el-row>
 </template>
 <script>
 import NoLoginRight from './no-login-right.vue'
+import LoginRight from './login-right.vue'
 export default {
 	name: 'no-login-header',
 	data() {
@@ -31,7 +33,8 @@ export default {
 		}
 	},
 	components: {
-		NoLoginRight
+		NoLoginRight,
+		LoginRight
 	}
 }
 </script>

@@ -8,11 +8,19 @@ import router from './router'
 import store from './store'
 import "../static/base-style.css"
 import axios from './components/general/axios-plugin'
-Vue.use( ElementUI )
-Vue.use( axios )
-new Vue( {
-	el: '#app',
-	router,
-	store,
-	render: h => h( App )
-} )
+import general from './components/general/general-function'
+import msgBoxWrap from './components/general/message-box-wrap'
+
+Vue.use(ElementUI) //could be further reduce range by use individually
+Vue.use(general, {})
+Vue.use(msgBoxWrap)
+
+let instance = new Vue({
+  el: '#app',
+  router,
+  store,
+  render: h => h(App)
+})
+Vue.use(axios, {
+  instance
+})

@@ -32,7 +32,7 @@
 		           @click.native="$router.push('/task/accept-task')">返回任务列表</el-button>
 	</div>
 	<div class="col-3">
-		<user-panel/>
+		<user-panel :creatorInfo="task" />
 	</div>
 	<bid-modal ref="bidModal"
 	           :task="task"

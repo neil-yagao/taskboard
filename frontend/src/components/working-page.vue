@@ -29,10 +29,12 @@ export default {
 	},
 	mounted() {
 		let username = this.readCookie('USERNAME');
-		if (username) {
+		if (username && !this.$store.state.hasLogin) {
 			this.$store.commit('setLoginUser', {
-				_id: this.readCookie('USER_ID'),
-				username: username
+				user: {
+					_id: this.readCookie('USER_ID'),
+					username: username
+				}
 			})
 		}
 	}

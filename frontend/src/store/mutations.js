@@ -1,10 +1,10 @@
 export default {
   setLoginUser(state, payload) {
     state.hasLogin = true;
-    state.user = payload;
+    state.user = payload.msg;
     if (window.localStorage) {
-      localStorage.setItem('username', payload.username);
-      localStorage.setItem('userid', payload._id);
+      localStorage.setItem('username', payload.msg.username);
+      localStorage.setItem('userid', payload.msg._id);
     }
   },
   logoutUser(state) {

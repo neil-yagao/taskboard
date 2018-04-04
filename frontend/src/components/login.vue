@@ -56,7 +56,7 @@ export default {
 				password: md5(this.user.password)
 			}).then(res => {
 				if (res.success) {
-					this.successAndRedirect(res.msg, '欢迎回来,' + res.msg.username)
+					this.successAndRedirect(res, '欢迎回来,' + res.msg.username)
 				} else {
 					this.failureWarning(res.msg)
 				}

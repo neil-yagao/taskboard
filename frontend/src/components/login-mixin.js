@@ -17,8 +17,8 @@ export default {
     successAndRedirect(res, msg) {
       return new Promise((resolve, reject) => {
         try {
-          this.createCookie('USER_ID', res._id);
-          this.createCookie('USERNAME', res.username);
+          this.createCookie('USER_ID', res.msg._id);
+          this.createCookie('USERNAME', res.msg.username);
           this.$store.commit('setLoginUser', res)
           if (this.redirect === '1') {
             this.$messageBox.success(msg).then(() => {

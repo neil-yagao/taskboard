@@ -5,7 +5,11 @@
         欢迎回来：{{$store.state.user.username}}<i class="el-icon-arrow-down el-icon--right"></i>
       </span>
 		<el-dropdown-menu slot="dropdown">
-			<el-dropdown-item @click.native="logout()">登出</el-dropdown-item>
+			<el-dropdown-item>我发布的任务</el-dropdown-item>
+			<el-dropdown-item>我接受的任务</el-dropdown-item>
+
+			<el-dropdown-item @click.native="logout()"
+			                  divided>登出</el-dropdown-item>
 
 		</el-dropdown-menu>
 	</el-dropdown>

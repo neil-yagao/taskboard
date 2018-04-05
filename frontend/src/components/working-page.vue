@@ -31,7 +31,7 @@ export default {
 		let username = this.readCookie('USERNAME');
 		if (username && !this.$store.state.hasLogin) {
 			this.$store.commit('setLoginUser', {
-				user: {
+				msg: {
 					_id: this.readCookie('USER_ID'),
 					username: username
 				}

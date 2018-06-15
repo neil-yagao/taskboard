@@ -5,7 +5,7 @@
 	</el-header>
 	<el-container>
 		<el-main>
-			<task-brief v-for="(task,index) in tasks" :key="index" :task="task" key="id" @update-list="fetchTasks" />
+			<task-brief v-for="task in tasks" :task="task" :key="task.id" @update-list="fetchTasks" />
 		</el-main>
 	</el-container>
 </div>

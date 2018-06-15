@@ -27,16 +27,6 @@
 				          :rows="5"
 				          clearable></el-input>
 			</el-form-item>
-			<el-form-item>
-				<el-upload class="upload-line"
-				           drag
-				           action="https://jsonplaceholder.typicode.com/posts/"
-				           multiple>
-					<el-button style="margin:0.2rem 15rem 0 0.2rem"><i class="el-icon-upload el-icon--left"
-						   style="font-size:14px;margin:0;line-height:0"></i>上传</el-button>
-					<el-button type="text"><span>或许上传点文件可以帮助你更加清晰的描述您的任务？</span></el-button>
-				</el-upload>
-			</el-form-item>
 			<el-form-item label="要完成您任务的哪些技能必须要点呢？">
 				<tag-input placeholder="+技能"
 				           v-model="project.skills" />
@@ -59,8 +49,8 @@
 </div>
 </template>
 <script>
-import TagInput from '../general/tag-input.vue';
-import LoginRequiredModal from '../login-required-modal.vue';
+import TagInput from '../../general/tag-input.vue';
+import LoginRequiredModal from '../../login-required-modal.vue';
 import moment from 'moment'
 export default {
 	name: 'new-task',

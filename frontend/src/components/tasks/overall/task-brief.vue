@@ -16,7 +16,7 @@
 		<div class="col-3">
 			<h5>￥{{task.budget}}</h5>
 			<span style="margin-top:0.4rem">{{task.bids|| 0}}个候选人</span>
-			<p v-show="showBtn"
+			<p v-show="showBtn" v-if="showBiding == 'true'"
 			   style="margin-top:0.5rem">
 				<el-button type="success"
 				           size="small"
@@ -42,7 +42,11 @@ export default {
 		task: {
 			type: Object,
 			required: true
-		}
+		},
+    showBiding:{
+      type:String,
+      default:'true'
+    }
 	},
 	methods: {
 		bidProject() {

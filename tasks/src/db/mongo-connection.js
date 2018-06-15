@@ -1,5 +1,3 @@
 const config = require('../../config/app');
-var mongojs = require('mongojs')
-var db = mongojs(config.db.address,[])
-
-module.exports = db;
+var mongoose = require('mongoose')
+module.exports = mongoose.connect(config.db.address);

@@ -33,8 +33,8 @@
 </div>
 </template>
 <script>
-import moment from 'moment'
-import LoginRequiredModal from '../login-required-modal.vue';
+import moment from 'moment';
+import LoginRequiredModal from '../../login-required-modal.vue';
 export default {
 	name: 'bid-modal',
 	data() {
@@ -45,19 +45,23 @@ export default {
 				description: ''
 			},
 			rules: {
-				price: [{
-					required: true,
-					message: '输入你的价格吧！',
-					trigger: 'blur'
-				}],
-				description: [{
-					required: true,
-					min: 100,
-					message: '输入你的百字竞价宣言吧！',
-					trigger: 'blur'
-				}]
+				price: [
+					{
+						required: true,
+						message: '输入你的价格吧！',
+						trigger: 'blur'
+					}
+				],
+				description: [
+					{
+						required: true,
+						min: 100,
+						message: '输入你的百字竞价宣言吧！',
+						trigger: 'blur'
+					}
+				]
 			}
-		}
+		};
 	},
 	props: {
 		task: {
@@ -70,7 +74,7 @@ export default {
 			this.bidShow = true;
 		},
 		doBid() {
-			this.$refs['bidDetail'].validate((valid) => {
+			this.$refs['bidDetail'].validate(valid => {
 				if (valid) {
 					if (!this.$store.state.hasLogin) {
 						this.bidShow = false;
@@ -81,35 +85,25 @@ export default {
 						this.doPushBidDetail();
 					}
 				} else {
-					return false
+					return false;
 				}
-			})
+			});
 		},
 		doPushBidDetail() {
 			this.bidDetail.creator = this.$store.state.user;
-			this.bidDetail.createdDate = moment().format("YYYY-MM-DD HH:mm");
-			this.bidDetail.timestamp = moment().format("x");
-			this.axios.post('/tasks/' + this.task._id, {
-				condition: {
-					_id: this.task._id
-				},
-				operation: {
-					'$push': {
-						bidDetails: this.bidDetail
-					},
-					'$inc': {
-						bids: 1
-					}
-				}
-			}).then(res => {
-				this.bidShow = false;
-				this.$emit('modal-close')
-				this.$messageBox.success("竞价成功");
-			})
+			this.bidDetail.createdDate = moment().format('YYYY-MM-DD HH:mm');
+			this.bidDetail.timestamp = moment().format('x');
+			this.axios
+				.put('/tasks/' + this.task._id + '/bids', this.bidDetail)
+				.then(res => {
+					this.bidShow = false;
+					this.$emit('modal-close');
+					this.$messageBox.success('竞价成功');
+				});
 		}
 	},
 	components: {
 		LoginRequiredModal
 	}
-}
+};
 </script>

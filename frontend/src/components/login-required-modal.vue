@@ -39,7 +39,8 @@ export default {
 	watch: {
 		'$store.state.hasLogin': function(val) {
 			if (val) {
-				this.loginShow = false;
+        this.loginShow = false;
+        if(this.resolve)
 				this.resolve();
 			}
 		}

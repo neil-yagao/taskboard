@@ -28,3 +28,13 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## Todo
+1.accept bids
+2.tasks created by me
+3.tasks bided by me
+4.upload file
+5.edit personal profile.
+
+## Improvement
+GraphQL
